@@ -1,0 +1,14 @@
+C:\cygwin64\home\hemdatorn\dbwebb-kurser\ramverk1\me\kmom10\proj\src\Controller\ErrorHandlerController.php:28	Avoid unused parameters such as '$args'.
+C:\cygwin64\home\hemdatorn\dbwebb-kurser\ramverk1\me\kmom10\proj\src\Filter\MyTextFilter.php:129	Avoid using static access to class '\Michelf\MarkdownExtra' in method 'markdown'.
+C:\cygwin64\home\hemdatorn\dbwebb-kurser\ramverk1\me\kmom10\proj\src\Question\Answer.php:10	The property $user_id is not named in camelCase.
+C:\cygwin64\home\hemdatorn\dbwebb-kurser\ramverk1\me\kmom10\proj\src\Question\Comment.php:10	The property $user_id is not named in camelCase.
+C:\cygwin64\home\hemdatorn\dbwebb-kurser\ramverk1\me\kmom10\proj\src\Question\HTMLForm\CreateAnswer.php:58	Missing class import via use statement (line '58', column '31').
+C:\cygwin64\home\hemdatorn\dbwebb-kurser\ramverk1\me\kmom10\proj\src\Question\HTMLForm\CreateComment.php:60	Missing class import via use statement (line '60', column '31').
+C:\cygwin64\home\hemdatorn\dbwebb-kurser\ramverk1\me\kmom10\proj\src\Question\HTMLForm\CreateForm.php:70	Missing class import via use statement (line '70', column '31').
+C:\cygwin64\home\hemdatorn\dbwebb-kurser\ramverk1\me\kmom10\proj\src\Question\IndexController.php:24	The variable $MostActiveUserId is not named in camelCase.
+C:\cygwin64\home\hemdatorn\dbwebb-kurser\ramverk1\me\kmom10\proj\src\Question\IndexController.php:24	The variable $MostActiveUser is not named in camelCase.
+C:\cygwin64\home\hemdatorn\dbwebb-kurser\ramverk1\me\kmom10\proj\src\Question\IndexController.php:24	The variable $MostActiveUserId is not named in camelCase.
+C:\cygwin64\home\hemdatorn\dbwebb-kurser\ramverk1\me\kmom10\proj\src\Question\IndexController.php:24	The variable $MostActiveUser is not named in camelCase.
+C:\cygwin64\home\hemdatorn\dbwebb-kurser\ramverk1\me\kmom10\proj\src\Question\Question.php:10	The property $user_id is not named in camelCase.
+C:\cygwin64\home\hemdatorn\dbwebb-kurser\ramverk1\me\kmom10\proj\src\Question\Question.php:71	The method getMostActive() has a Cyclomatic Complexity of 10. The configured cyclomatic complexity threshold is 10.
+C:\cygwin64\home\hemdatorn\dbwebb-kurser\ramverk1\me\kmom10\proj\src\User\UserController.php:149	Avoid unused local variables such as '$page'.
