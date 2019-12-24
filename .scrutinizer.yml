@@ -16,7 +16,6 @@ build:
                 override:
                     -
                         command: "make phpunit"
-                        command: "mkdir build"
                         coverage:
                             file: "build/coverage.clover"
                             format: "php-clover"
