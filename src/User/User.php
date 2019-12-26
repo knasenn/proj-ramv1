@@ -47,8 +47,6 @@ class User extends ActiveRecordModel
      */
     public function setSession($id)
     {
-        session_destroy();
-        session_start();
         $_SESSION['user_id'] = $id;
     }
 
@@ -66,6 +64,7 @@ class User extends ActiveRecordModel
     public function logoutSession()
     {
         session_destroy();
+        session_start();
     }
 
 

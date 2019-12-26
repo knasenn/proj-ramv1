@@ -10,6 +10,7 @@ use Aiur18\Question\HTMLForm\DeleteForm;
 use Aiur18\Question\HTMLForm\UpdateForm;
 use Aiur18\Question\HTMLForm\CreateAnswer;
 use Aiur18\Question\HTMLForm\CreateComment;
+use Aiur18\getset\getset;
 
 /**
  * A sample controller to show how a controller class can be implemented.
@@ -28,7 +29,8 @@ class QuestionController implements ContainerInjectableInterface
      */
     public function indexActionGet() : object
     {
-        if (isset($_SESSION['user_id'])) {
+        $getServer = new getSet();
+        if ($getServer->getServer('user_id') != null) {
             $page = $this->di->get("page");
             $question = new Question();
             $question->setDb($this->di->get("dbqb"));
@@ -51,7 +53,8 @@ class QuestionController implements ContainerInjectableInterface
      */
     public function createAction() : object
     {
-        if (isset($_SESSION['user_id'])) {
+        $getServer = new getSet();
+        if ($getServer->getServer('user_id') != null) {
             $page = $this->di->get("page");
             $form = new CreateForm($this->di);
             $form->check();
@@ -74,7 +77,8 @@ class QuestionController implements ContainerInjectableInterface
      */
     public function deleteAction() : object
     {
-        if (isset($_SESSION['user_id'])) {
+        $getServer = new getSet();
+        if ($getServer->getServer('user_id') != null) {
             $page = $this->di->get("page");
             $form = new DeleteForm($this->di);
             $form->check();
@@ -97,7 +101,8 @@ class QuestionController implements ContainerInjectableInterface
      */
     public function updateAction(int $id) : object
     {
-        if (isset($_SESSION['user_id'])) {
+        $getServer = new getSet();
+        if ($getServer->getServer('user_id') != null) {
             $page = $this->di->get("page");
 
             $form = new CreateForm($this->di, $id);
@@ -115,7 +120,9 @@ class QuestionController implements ContainerInjectableInterface
             $com4quest->setDb($this->di->get("dbqb"));
 
             // //Fixa så ej session helst
-            $_SESSION['id_question'] = $id;
+            $getServer = new getSet();
+            $getServer->setServer('id_question', $id);
+            // $_SESSION['id_question'] = $id;
 
             $page->add("question/crud/createAnswer", [
                 "answer" => $answer->getHTML(),
@@ -141,11 +148,12 @@ class QuestionController implements ContainerInjectableInterface
      */
     public function commentAction($idAnswer) : object
     {
-        if (isset($_SESSION['user_id'])) {
+        $getServer = new getSet();
+        if ($getServer->getServer('user_id') != null) {
             $page = $this->di->get("page");
 
             // //Fixa så ej session helst
-            $idQuestion = $_SESSION['id_question'];
+            $idQuestion = $getServer->getServer('id_question');
 
             $form = new CreateComment($this->di, $idAnswer, $idQuestion);
             $form->check();
@@ -168,11 +176,12 @@ class QuestionController implements ContainerInjectableInterface
      */
     public function commentqAction($idAnswer) : object
     {
-        if (isset($_SESSION['user_id'])) {
+        $getServer = new getSet();
+        if ($getServer->getServer('user_id') != null) {
             $page = $this->di->get("page");
 
             // //Fixa så ej session helst
-            $idQuestion = $_SESSION['id_question'];
+            $idQuestion = $getServer->getServer('id_question');
             $idAnswer = "question";
 
 
@@ -199,7 +208,8 @@ class QuestionController implements ContainerInjectableInterface
      */
     public function tagsActionGet() : object
     {
-        if (isset($_SESSION['user_id'])) {
+        $getServer = new getSet();
+        if ($getServer->getServer('user_id') != null) {
             $page = $this->di->get("page");
             $tags = new Question();
             $tags->setDb($this->di->get("dbqb"));
@@ -221,7 +231,8 @@ class QuestionController implements ContainerInjectableInterface
      */
     public function spectagActionGet($tag) : object
     {
-        if (isset($_SESSION['user_id'])) {
+        $getServer = new getSet();
+        if ($getServer->getServer('user_id') != null) {
             $page = $this->di->get("page");
 
             $tagInfo = new Question();

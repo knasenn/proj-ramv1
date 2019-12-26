@@ -6,6 +6,7 @@ use Anax\HTMLForm\FormModel;
 use Psr\Container\ContainerInterface;
 use Aiur18\Question\Comment;
 use Aiur18\Filter\MyTextFilter;
+use Aiur18\getset\getset;
 
 /**
  * Form to create an item.
@@ -60,7 +61,8 @@ class CreateComment extends FormModel
         $filterMarkdown = new \Aiur18\Filter\MyTextFilter();
         $commentRes = $filterMarkdown->markdown($this->form->value("comment"));
 
-        $answer->user_id  = $_SESSION['user_id'];
+        $getServer = new getSet();
+        $answer->user_id  = $getServer->getServer('user_id');
         $answer->comment = $commentRes;
         $answer->id_answer = $this->idForAnswer;
         $answer->id_question = $this->idForQuestion;

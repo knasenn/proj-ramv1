@@ -11,6 +11,7 @@ use Aiur18\Question\HTMLForm\UpdateForm;
 use Aiur18\Question\HTMLForm\CreateAnswer;
 use Aiur18\Question\HTMLForm\CreateComment;
 use Aiur18\User\User;
+use Aiur18\getset\getset;
 
 /**
  * A sample controller to show how a controller class can be implemented.
@@ -23,7 +24,9 @@ class IndexController implements ContainerInjectableInterface
      */
     public function indexActionGet() : object
     {
-        if (isset($_SESSION['user_id'])) {
+        $getServer = new getSet();
+
+        if ($getServer->getServer('user_id') != null) {
             $page = $this->di->get("page");
             $answer = new Answer();
             $answer->setDb($this->di->get("dbqb"));
@@ -34,10 +37,12 @@ class IndexController implements ContainerInjectableInterface
             $question = new Question();
             $question->setDb($this->di->get("dbqb"));
 
-            $questionItemsLast = $question->getLastThree($question->findAll());
-            $questionMostTags = $question->getMostTags($question->findAll());
+            $questionsFindAll = $question->findAll();
+
+            $questionItemsLast = $question->getLastThree($questionsFindAll);
+            $questionMostTags = $question->getMostTags($questionsFindAll);
             $MostActiveUserId = $question->getMostActive(
-                $question->findAll(),
+                $questionsFindAll,
                 $answer->findAll(),
                 $comment->findAll()
             );
@@ -66,7 +71,8 @@ class IndexController implements ContainerInjectableInterface
      */
     public function omActionGet() : object
     {
-        if (isset($_SESSION['user_id'])) {
+        $getServer = new getSet();
+        if ($getServer->getServer('user_id') != null) {
             $page = $this->di->get("page");
 
             $page->add("question/crud/om", [

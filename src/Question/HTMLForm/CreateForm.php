@@ -6,6 +6,7 @@ use Anax\HTMLForm\FormModel;
 use Psr\Container\ContainerInterface;
 use Aiur18\Question\Question;
 use Aiur18\Filter\MyTextFilter;
+use Aiur18\getset\getset;
 
 /**
  * Form to create an item.
@@ -71,7 +72,8 @@ class CreateForm extends FormModel
         $subjectRes = $filterMarkdown->markdown($this->form->value("subject"));
         $questionRes = $filterMarkdown->markdown($this->form->value("question"));
 
-        $question->user_id  = $_SESSION['user_id'];
+        $getServer = new getSet();
+        $question->user_id  = $getServer->getServer('user_id');
         $question->subject  = $subjectRes;
         $question->question = $questionRes;
         $question->facebook = $this->form->value("facebook");

@@ -9,7 +9,7 @@ use Anax\DatabaseActiveRecord\ActiveRecordModel;
  */
 class Answer extends ActiveRecordModel
 {
-    /**
+    /** 
      * @var string $tableName name of the database table.
      */
     protected $tableName = "Answer";

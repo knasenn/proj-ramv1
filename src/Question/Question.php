@@ -76,8 +76,6 @@ class Question extends ActiveRecordModel
                 if (array_key_exists($value->user_id, $array)) {
                     $array[$value->user_id]++;
                 } else {
-                    // $tempArray = array();
-                    // $tempArray = array($value->user_id => 1);
                     $array[$value->user_id] = 1;
                 }
             }

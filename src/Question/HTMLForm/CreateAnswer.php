@@ -5,6 +5,7 @@ namespace Aiur18\Question\HTMLForm;
 use Anax\HTMLForm\FormModel;
 use Psr\Container\ContainerInterface;
 use Aiur18\Question\Answer;
+use Aiur18\getset\getset;
 
 /**
  * Form to create an item.
@@ -58,7 +59,8 @@ class CreateAnswer extends FormModel
         $filterMarkdown = new \Aiur18\Filter\MyTextFilter();
         $answerRes = $filterMarkdown->markdown($this->form->value("answer"));
 
-        $answer->user_id  = $_SESSION['user_id'];
+        $getServer = new getSet();
+        $answer->user_id  = $getServer->getServer('user_id');
         $answer->answer = $answerRes;
         $answer->id_question = $this->idForQuestion;
         $answer->save();

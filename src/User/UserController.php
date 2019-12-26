@@ -9,6 +9,7 @@ use Aiur18\User\HTMLForm\CreateUserForm;
 use Aiur18\User\HTMLForm\UpdateForm;
 use Aiur18\Question\Question;
 use Aiur18\Question\Comment;
+use Aiur18\getset\getset;
 
 /**
  * A sample controller to show how a controller class can be implemented.
@@ -21,7 +22,8 @@ class UserController implements ContainerInjectableInterface
      */
     public function listActionGet() : object
     {
-        if (isset($_SESSION['user_id'])) {
+        $getServer = new getSet();
+        if ($getServer->getServer('user_id') != null) {
             $page = $this->di->get("page");
             $user = new User();
             $user->setDb($this->di->get("dbqb"));
@@ -42,7 +44,8 @@ class UserController implements ContainerInjectableInterface
      */
     public function infoActionGet($id) : object
     {
-        if (isset($_SESSION['user_id'])) {
+        $getServer = new getSet();
+        if ($getServer->getServer('user_id') != null) {
             $page = $this->di->get("page");
             $user = new User();
             $user->setDb($this->di->get("dbqb"));
@@ -74,9 +77,11 @@ class UserController implements ContainerInjectableInterface
     public function loginAction() : object
     {
         $page = $this->di->get("page");
-        if (isset($_SESSION['user_id'])) {
+        $getServer = new getSet();
+        if ($getServer->getServer('user_id') != null) {
             $this->di->get("response")->redirect("user/update")->send();
         } else {
+            $getServer->logoutSession();
             $form = new UserLoginForm($this->di);
             $form->check();
             $content = $form->getHTML();
@@ -117,7 +122,8 @@ class UserController implements ContainerInjectableInterface
      */
     public function updateAction() : object
     {
-        $id = $_SESSION['user_id'];
+        $getServer = new getSet();
+        $id = $getServer->getServer('user_id');
         $page = $this->di->get("page");
 
         $form = new UpdateForm($this->di, $id);

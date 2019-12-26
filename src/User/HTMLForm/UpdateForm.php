@@ -68,7 +68,7 @@ class UpdateForm extends FormModel
 
 
     /**
-   * Method
+   * Method 
    */
     public function getItemDetails($id) : object
     {
